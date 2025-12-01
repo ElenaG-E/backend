@@ -1,0 +1,51 @@
+{% extends "temucosoft_app/base.html" %}
+{% block title %}Carrito y Checkout{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Carrito de Compras y Checkout</h2>
+<p class="lead">Revisa tus ítems antes de confirmar la orden.</p>
+
+<div class="row">
+    <div class="col-lg-8">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr><th>Producto</th><th>Cantidad</th><th>Precio Unitario</th><th>Subtotal</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Producto A</td>
+                    <td>2</td>
+                    <td>$10.000</td>
+                    <td>$20.000</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-end"><strong>TOTAL:</strong></td>
+                    <td><strong>$XX.XXX</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    
+    <div class="col-lg-4">
+        <div class="card p-3 shadow-sm">
+            <h4 class="card-title">Confirmación</h4>
+            <p>Ingresa tus datos para finalizar la compra (opcionalmente sin login).</p>
+            
+            <form id="checkout-form" method="post" action="/api/cart/checkout/">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="client_name" class="form-label">Nombre:</label>
+                    <input type="text" id="client_name" name="client_name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="client_email" class="form-label">Email:</label>
+                    <input type="email" id="client_email" name="client_email" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-warning w-100">Confirmar Compra (Checkout)</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

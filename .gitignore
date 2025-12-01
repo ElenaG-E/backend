@@ -1,0 +1,21 @@
+# Virtual Environment
+env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+
+# Django specific files
+*.log
+*.pot
+*.mo
+*.sqlite3
+
+# Settings and Secrets (if managed as local files)
+secret_key.txt
+
+# Static files collected by collectstatic
+staticfiles/
+
+# Media uploaded by users (if applicable)
+media/

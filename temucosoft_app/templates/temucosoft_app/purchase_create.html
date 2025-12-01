@@ -1,0 +1,36 @@
+{% extends "temucosoft_app/base.html" %}
+{% block title %}Registrar Compra (Ingreso Stock){% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Registro de Compra a Proveedor</h2>
+<p class="lead">Utilice este formulario para registrar una compra y aumentar el inventario (Gerente/Admin).</p>
+
+<form method="post" class="card p-4 shadow-sm">
+    {% csrf_token %}
+    
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="id_supplier" class="form-label">Proveedor:</label>
+            <select id="id_supplier" name="supplier" class="form-select"></select>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="id_branch" class="form-label">Sucursal de Destino:</label>
+            <select id="id_branch" name="branch" class="form-select"></select>
+        </div>
+    </div>
+
+    <h4 class="mt-4">Productos a Ingresar</h4>
+    <table class="table table-bordered" id="items-table">
+        <thead><tr><th>Producto</th><th>Cantidad</th><th>Costo Unitario</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><select name="product_id" class="form-select"></select></td>
+                <td><input type="number" name="quantity" class="form-control" min="1" required></td>
+                <td><input type="number" name="cost" class="form-control" step="0.01" min="0" required></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <button type="submit" class="btn btn-success">Registrar Compra e Incrementar Stock</button>
+</form>
+{% endblock %}

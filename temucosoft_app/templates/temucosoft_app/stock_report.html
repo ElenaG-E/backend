@@ -1,0 +1,23 @@
+{% extends "temucosoft_app/base.html" %}
+{% block title %}Reporte Consolidado de Stock{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Reporte Consolidado de Stock</h2>
+<p class="lead">Visión general del stock de productos agrupado por sucursal (API: <code>/api/reports/stock/</code>).</p>
+
+<div class="card p-3 mb-4">
+    <h5 class="card-title">Stock por Sucursal: Bodega Central</h5>
+    <table class="table table-sm">
+        <thead>
+            <tr><th>SKU</th><th>Producto</th><th>Stock</th><th>Punto de Reorden</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>001</td><td>Producto A</td><td>150</td><td>20</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="card p-3">
+    <h5 class="card-title">Stock por Sucursal: Sucursal Sur</h5>
+    </div>
+{% endblock %}

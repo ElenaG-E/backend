@@ -1,0 +1,22 @@
+{% extends "temucosoft_app/base.html" %}
+{% block title %}Reporte de Ventas{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Reporte de Ventas (Día/Mes por Sucursal)</h2>
+
+<form class="row g-3 mb-4 card p-3">
+    <div class="col-md-3"><label for="date_from" class="form-label">Desde:</label><input type="date" class="form-control" id="date_from"></div>
+    <div class="col-md-3"><label for="date_to" class="form-label">Hasta:</label><input type="date" class="form-control" id="date_to"></div>
+    <div class="col-md-4"><label for="branch_select" class="form-label">Sucursal:</label><select id="branch_select" class="form-select"><option value="">Todas</option></select></div>
+    <div class="col-md-2 d-flex align-items-end"><button type="submit" class="btn btn-primary w-100">Generar Reporte</button></div>
+</form>
+
+<table class="table table-bordered table-sm">
+    <thead class="table-info">
+        <tr><th>ID Venta</th><th>Fecha</th><th>Sucursal</th><th>Método Pago</th><th>Total</th><th>Vendedor</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>1001</td><td>2025-11-30</td><td>Sur</td><td>Tarjeta</td><td>$45.000</td><td>vendedor.pablo</td></tr>
+    </tbody>
+</table>
+{% endblock %}

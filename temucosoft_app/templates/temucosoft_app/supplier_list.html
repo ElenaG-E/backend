@@ -1,0 +1,33 @@
+{% extends "temucosoft_app/base.html" %}
+{% block title %}Proveedores{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Gestión de Proveedores</h2>
+<p class="lead">Listado de proveedores asociados a {{ user.company.name }}.</p>
+
+<a href="#" class="btn btn-primary mb-3">Registrar Nuevo Proveedor</a>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>RUT</th>
+            <th>Contacto</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Distribuidora Andes</td>
+            <td>11.222.333-4</td>
+            <td>contacto@andes.cl</td>
+            <td>
+                <a href="#" class="btn btn-sm btn-info">Editar</a>
+                <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

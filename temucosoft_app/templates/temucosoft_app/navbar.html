@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'dashboard' %}">TemucoSoft | {{ user.get_role_display|default:"Público" }}</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated and user.is_active %}
+                    
+                    {% if user.role == 'admin_cliente' %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'catalogo' %}">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'supplier_list' %}">Proveedores</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'branch_list' %}">Sucursales</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'branch_inventory_list' %}">Inventario</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Suscripción</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'sales_report' %}">Reportes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Usuarios</a></li>
+
+                    {% elif user.role == 'gerente' %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'catalogo' %}">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'supplier_list' %}">Proveedores</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'branch_inventory_list' %}">Inventario</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'sales_report' %}">Reportes</a></li>
+
+                    {% elif user.role == 'vendedor' %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'pos_sell' %}">POS (Vender)</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'catalogo' %}">Productos (Ver)</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'cart_view' %}">Carro</a></li>
+
+                    {% elif user.role == 'super_admin' %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'admin_create_client' %}">Clientes</a></li>
+
+                    {% endif %}
+
+                    <li class="nav-item"><a class="btn btn-outline-danger btn-sm ms-2" href="{% url 'logout' %}">Logout</a></li>
+
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'catalogo' %}">Catálogo</a></li>
+                    <li class="nav-item"><a class="btn btn-primary btn-sm ms-2" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'cart_view' %}">Carro</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

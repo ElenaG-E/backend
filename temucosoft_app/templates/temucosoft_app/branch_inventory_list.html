@@ -1,0 +1,23 @@
+{% extends "temucosoft_app/base.html" %}
+{% block title %}Inventario por Sucursal{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Stock Detallado en Sucursal: [Nombre de la Sucursal]</h2>
+<p class="lead">Datos obtenidos del endpoint API: <code>/api/branches/{id}/inventory/</code>.</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Producto</th>
+            <th>SKU</th>
+            <th>Stock Actual</th>
+            <th>Punto de Reorden</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Producto A</td><td>SKU-A</td><td>120</td><td>20</td><td><span class="badge bg-success">Suficiente</span></td></tr>
+        <tr><td>Producto B</td><td>SKU-B</td><td>5</td><td>15</td><td><span class="badge bg-danger">Bajo Stock</span></td></tr>
+    </tbody>
+</table>
+{% endblock %}

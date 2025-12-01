@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | {{ user.get_role_display|default:"Público" }}{% endblock %}
+
+{% block content %}
+    <div class="jumbotron text-center bg-light p-5 rounded">
+        <h1 class="display-4">Bienvenido, {{ user.username|default:"Cliente Público" }}</h1>
+        <p class="lead">Tu Rol: <strong>{{ user.get_role_display|default:"No Autenticado" }}</strong></p>
+        <hr class="my-4">
+        <p>Utiliza la barra de navegación superior para acceder a las secciones permitidas de tu rol.</p>
+        
+        {% if user.role == 'super_admin' %}
+            <p class="mt-4"><strong>ADMINISTRACIÓN CENTRAL:</strong> Utiliza el enlace 'Clientes' para gestionar cuentas de tenant.</p>
+        {% elif user.role == 'admin_cliente' %}
+            <p class="mt-4"><strong>GESTIÓN DE TIENDA:</strong> Administra Productos, Proveedores y Usuarios de tu sucursal.</p>
+        {% endif %}
+    </div>
+{% endblock %}
